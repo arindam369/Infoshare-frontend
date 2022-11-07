@@ -1,0 +1,70 @@
+.room-heading{
+    text-align: center;
+    font-weight: 700;
+    font-size: 1.6rem;
+    margin-top: 40px;
+}
+.room-description{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 30px;
+}
+.room-description textarea{
+    resize: none;
+    width: 600px;
+    height: 300px;
+    border-radius: 12px;
+    outline: none;
+    padding: 15px 20px;
+    border: 1px solid rgb(214, 214, 214);
+}
+.button-box{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 10px;
+}
+.button-box > button{
+    color: white;
+    padding: 10px 15px;
+    border: 0px;
+    border-radius: 6px;
+    margin: 10px;
+    cursor: pointer;
+    font-weight: 600;
+    font-size: .8rem;
+}
+.button-box .save{
+    background-color: #4BB543;
+}
+.button-box .back{
+    background-color: #d9534f;
+}
+.back-link{
+    padding: 8px 15px;
+    border: 0px;
+    border-radius: 6px;
+    margin: 10px;
+    cursor: pointer;
+    font-weight: 600;
+    font-size: .8rem;
+    background-color: #d9534f;
+}
+.back-link button{
+    border: 0px;
+    color: white;
+    font-weight: 700;
+    cursor: pointer;
+}
+textarea::-webkit-scrollbar {
+    width: .3em;
+}
+
+textarea::-webkit-scrollbar-track {
+    -webkit-box-shadow: inset 0 0 0px rgba(0,0,0,0.3);
+}
+
+textarea::-webkit-scrollbar-thumb {
+  background-color: rgb(201, 201, 201);
+}

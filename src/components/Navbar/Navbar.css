@@ -1,0 +1,45 @@
+.navBar{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: black;
+    color: white;
+    padding: 8px 30px;
+}
+.navBar .leftNav{
+    font-family: 'Libre Franklin', sans-serif;
+    font-weight: 800;
+    font-size: 1.1rem;
+    cursor: pointer;
+}
+.navBar .rightNav{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.navBar .rightNav li{
+    list-style: none;
+    /* margin: 0px 20px;
+    background-color: #5a4bda;
+    color: white;
+    padding: 10px 15px;
+    font-weight: 600;
+    font-size: .9rem;
+    border-radius: 6px;
+    cursor: pointer; */
+}
+a{
+    text-decoration: none;
+    color: white;
+}
+.link{
+    list-style: none;
+    margin: 0px 20px;
+    background-color: #5a4bda;
+    color: white;
+    padding: 10px 15px;
+    font-weight: 600;
+    font-size: .9rem;
+    border-radius: 6px;
+    cursor: pointer;
+}
