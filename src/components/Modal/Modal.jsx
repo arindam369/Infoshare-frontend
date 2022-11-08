@@ -22,7 +22,7 @@ function ModalOverlay(props) {
   return (
     <div className="modal-container">
         <div className="modal-input">
-          <label htmlFor="room-name">Please enter unique room name</label>
+          <label htmlFor="room-name">{props.modalType==="Create"?"Please enter a unique room name":"Enter the room name you are looking for"}</label>
           <input type="text" placeholder="Enter Room Name" id="room-name" value={name} onChange={(e)=>{setName(e.target.value)}}/>
         </div>
         <div className="roomName-button-box">
@@ -38,7 +38,7 @@ export default function Modal(props) {
     <>
       {ReactDOM.createPortal(<Backdrop onCancel={props.onCancel}/>, document.getElementById("backdrop"))}
       {ReactDOM.createPortal(
-        <ModalOverlay onCancel={props.onCancel} onEnter={props.onEnter}/>,
+        <ModalOverlay onCancel={props.onCancel} onEnter={props.onEnter} modalType={props.modalType}/>,
         document.getElementById("overlay")
       )}
     </>

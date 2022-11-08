@@ -1,41 +1,53 @@
 import "./PrivateRoom.css";
 import { useState } from "react";
 import Modal from "./../Modal/Modal";
-import Room from "../Room/Room";
 import { useContext } from "react";
 import RoomContext from "../../store/RoomContext";
 
 export default function PrivateRoom(){
-    const [visibleModal, setVisibleModal] = useState(false);
+    const [visibleCreateModal, setVisibleCreateModal] = useState(false);
+    const [visibleJoinModal, setVisibleJoinModal] = useState(false);
     const [visiblePrivate, setVisiblePrivate] = useState(false);
 
 
     const roomCtx = useContext(RoomContext);
 
-    const showModal = ()=>{
-        setVisibleModal(true);
+    const showCreateModal = ()=>{
+        setVisibleCreateModal(true);
+    }
+    const showJoinModal = ()=>{
+        setVisibleJoinModal(true);
     }
     const hideModal = ()=>{
-        setVisibleModal(false);
+        setVisibleCreateModal(false);
+        setVisibleJoinModal(false);
     }
-    const handleOnEnter = (room_name)=>{
+    const createRoom = ()=>{
+        showCreateModal();
+    }
+    const joinRoom = ()=>{
+        showJoinModal();
+    }
+    const handleCreate = (room_name)=>{
+        hideModal();
+        setVisiblePrivate(true);
+        roomCtx.createPrivateRoom(room_name);
+    }
+    const handleJoin = (room_name)=>{
         hideModal();
         setVisiblePrivate(true);
         roomCtx.findPrivateData(room_name);
     }
-    const joinRoom = ()=>{
-        showModal();
-    }
     return (
         <>
-            {visibleModal && <Modal onCancel={hideModal} onEnter={handleOnEnter}/>}
+            {visibleCreateModal && <Modal onCancel={hideModal} onEnter={handleCreate} modalType="Create"/>}
+            {visibleJoinModal && <Modal onCancel={hideModal} onEnter={handleJoin} modalType="Join"/>}
             {!visiblePrivate && 
                 <div className="room-button-box">
-                    <button onClick={showModal}>Create Room</button>
+                    <button onClick={createRoom}>Create Room</button>
                     <button onClick={joinRoom}>Join Room</button>
                 </div>
             }
-            {/* {visiblePrivate && <Room roomType="Private Room"/>} */}
         </>
     );
 }

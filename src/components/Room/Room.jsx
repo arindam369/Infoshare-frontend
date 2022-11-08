@@ -4,6 +4,7 @@ import { useState } from "react";
 import { useEffect } from "react";
 import { useContext } from "react";
 import RoomContext from "../../store/RoomContext";
+import {toast} from "react-toastify";
 
 export default function Room(props){
     const [code, setCode] = useState("");
@@ -15,6 +16,7 @@ export default function Room(props){
 
     function updatePublicData(){
         roomCtx.updatePublicData(code);
+        toast.success("Changes saved successfully");
     }
 
     return (

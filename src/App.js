@@ -5,15 +5,10 @@ import Body from './components/Body/Body';
 import Room from './components/Room/Room';
 import Room2 from './components/Room/Room2';
 import PrivateRoom from './components/PrivateRoom/PrivateRoom';
-// import { useState } from 'react';
-import RoomContext from "./store/RoomContext";
-import { useContext } from 'react';
+import { ToastContainer} from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 export default function App(){
-  // const [publicCode, setPublicCode] = useState("");
-
-  const roomCtx = useContext(RoomContext);
-
   return (
     <>
       <Navbar/>
@@ -23,6 +18,19 @@ export default function App(){
         <Route path="/private" element={<PrivateRoom/>}/>
         <Route path="/private/:roomName" element={<Room2 roomType="Private Room" />}/>
       </Routes>
+
+      <ToastContainer
+        position="top-right"
+        autoClose={5000}
+        hideProgressBar={false}
+        newestOnTop={false}
+        closeOnClick
+        rtl={false}
+        pauseOnFocusLoss
+        draggable
+        pauseOnHover
+        theme="colored"
+        />
     </>
   );
 }

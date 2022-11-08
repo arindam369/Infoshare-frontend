@@ -68,3 +68,53 @@ textarea::-webkit-scrollbar-track {
 textarea::-webkit-scrollbar-thumb {
   background-color: rgb(201, 201, 201);
 }
+.roomNotFound{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 90vh;
+}
+.roomNotFound img{
+    height: 300px;
+    width: 300px;
+}
+.roomNotFound .room-text h3{
+    font-weight: 800;
+    font-size: 1.3rem;
+    margin-bottom: 0px;
+}
+.roomNotFound .room-text h4{
+    font-weight: 400;
+    font-size: .9rem;
+    margin-top: 10px;
+}
+.room-name{
+    margin-top: 5px;
+    font-size: 1rem;
+    color: rgb(82, 82, 82);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.room-name-roomName{
+    margin-right: 10px;
+    width: 100px;
+    height: 15px;
+    /* border: 1px solid red; */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.room-name-icon{
+    /* border: 1px solid red; */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+}
+.pass-stars{
+    font-size: .6rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
