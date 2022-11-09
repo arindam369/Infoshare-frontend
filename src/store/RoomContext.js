@@ -19,7 +19,7 @@ export const RoomContextProvider = (props)=>{
     const [privateData, setPrivateData] = useState("");
     const [privateRoomFound, setPrivateRoomFound] = useState(false);
     
-    const BACKEND_URL = "http://localhost:5000";
+    const BACKEND_URL = process.env.REACT_APP_DB.slice(0, -1);
 
     const findPublicData = ()=>{
         const SEARCH_URL = `${BACKEND_URL}/public-room`;
