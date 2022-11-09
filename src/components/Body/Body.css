@@ -13,9 +13,8 @@
 .body-container .body-heading{
     font-weight: 800;
     font-size: 1.8rem;
-    width: 700px;
     text-align: center;
-    color: rgb(54, 54, 54);
+    color: rgb(4, 111, 219);
 }
 .body-container .body-description{
     list-style: none;
@@ -44,7 +43,8 @@ a{
 .link{
     list-style: none;
     margin: 0px 20px;
-    background-color: #5a4bda;
+    /* background-color: #5a4bda; */
+    background-color: rgb(4, 111, 219);
     color: white;
     font-weight: 600;
     font-size: .9rem;
@@ -56,7 +56,6 @@ a{
     display: flex;
     justify-content: center;
     align-items: center;
-    /* border: 1px solid red; */
     margin: 40px 0px;
 }
 .body-desc-img .body-img img{
@@ -64,4 +63,53 @@ a{
 }
 .body-img{
     margin-right: 40px;
+}
+@media (max-width: 760px){
+    .body-desc-img{
+        flex-direction: column;
+    }
+    .body-img{
+        margin-bottom: 30px;
+    }
+}
+@media (max-width: 500px){
+    .link{
+        list-style: none;
+        margin: 0px 10px;
+        font-weight: 600;
+        font-size: .8rem;
+        cursor: pointer;
+        padding: 13px 15px;
+        border-radius: 6px;
+    }
+    .rooms .link{
+        font-size: 1rem;
+        cursor: pointer;
+        padding: 13px 15px;
+        
+    }
+}
+@media (max-width: 435px){
+    .link{
+        margin: 0px 10px;
+        font-size: .67rem;
+        cursor: pointer;
+        padding: 10px 13px;
+        border-radius: 6px;
+    }
+    .body-container .body-heading{
+        font-size: 1.25rem;
+    }
+    .body-container .body-description li span{
+        font-size: .9rem;
+    }
+}
+@media (max-width: 380px){
+    .link{
+        margin: 0px 10px;
+        font-size: .6rem;
+        cursor: pointer;
+        padding: 10px 13px;
+        border-radius: 6px;
+    }
 }

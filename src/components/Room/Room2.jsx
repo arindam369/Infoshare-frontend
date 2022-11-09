@@ -4,7 +4,6 @@ import { useState } from "react";
 import { useEffect } from "react";
 import { useContext } from "react";
 import RoomContext from "../../store/RoomContext";
-import { useParams} from 'react-router-dom';
 import { AiFillEye, AiFillEyeInvisible } from "react-icons/ai";
 import { FaStarOfLife } from "react-icons/fa";
 import {toast} from "react-toastify";

@@ -53,8 +53,43 @@
     cursor: pointer;
 }
 .roomName-button-box .enter-room{
-    background-color: #5a4bda;
+    /* background-color: #5a4bda; */
+    background-color: rgb(4, 111, 219);
 }
 .roomName-button-box .cancel-room{
     background-color: #d9534f;
+}
+@media (max-width: 500px){
+    .modal-container{
+        border: 1px solid black;
+        width: 380px;
+        height: 180px;
+    }
+    .modal-input input{
+        padding: 5px 10px;
+        width: 295px;
+        margin-top: 8px;
+        margin-bottom: 10px;
+        outline: none;
+    }
+    .modal-input label{
+        font-size: .9rem;
+    }
+}
+@media (max-width: 405px){
+    .modal-container{
+        border: 1px solid black;
+        width: 320px;
+        height: 180px;
+    }
+    .modal-input input{
+        padding: 5px 10px;
+        width: 240px;
+        margin-top: 8px;
+        margin-bottom: 10px;
+        outline: none;
+    }
+    .modal-input label{
+        font-size: .75rem;
+    }
 }

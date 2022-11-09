@@ -55,7 +55,7 @@ export default function PrivateRoom(){
                     <button onClick={joinRoom}>Join Room</button>
                 </div>
             }
-            {visiblePrivate && <Room2 roomName={roomName}/>}
+            {visiblePrivate && <Room2 roomName={roomName} roomType="Private Room"/>}
         </>
     );
 }
