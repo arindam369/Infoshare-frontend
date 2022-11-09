@@ -35,11 +35,25 @@
     font-weight: 600;
     font-size: .8rem;
 }
+.button-box2 > button{
+    color: white;
+    padding: 10px 15px;
+    border: 0px;
+    border-radius: 6px;
+    margin: 10px;
+    cursor: pointer;
+    font-weight: 600;
+    font-size: .8rem;
+}
 .button-box .save{
     background-color: #4BB543;
 }
 .button-box .back{
     background-color: #d9534f;
+}
+.button-box2 .back{
+    background-color: #d9534f;
+    margin-top: 40px;
 }
 .back-link{
     padding: 8px 15px;

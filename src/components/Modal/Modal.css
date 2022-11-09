@@ -10,7 +10,7 @@
 .modal-container{
     border: 1px solid black;
     width: 450px;
-    height: 140px;
+    height: 180px;
     z-index: 100;
     position: absolute;
     left: 0;
@@ -40,7 +40,7 @@
 .roomName-button-box{
     width: 82%;
     display: flex;
-    justify-content: end;
+    justify-content: flex-end;
     align-items: center;
 }
 

@@ -19,6 +19,8 @@ export const RoomContextProvider = (props)=>{
     const [privateData, setPrivateData] = useState("");
     const [privateRoomFound, setPrivateRoomFound] = useState(false);
     
+    console.log(privateRoomFound);
+    
     const findPublicData = ()=>{
         const SEARCH_URL = `http://localhost:5000/public-room`;
         axios.get(SEARCH_URL).then((response)=>{
@@ -39,28 +41,47 @@ export const RoomContextProvider = (props)=>{
             return {err: err};
         })
     }
-    const createPrivateRoom = (room_name)=>{
+    const createPrivateRoom = (room_name, room_pass)=>{
         const CREATE_URL = `http://localhost:5000/rooms`;
-        axios.post(CREATE_URL, {roomName: room_name, code: ""}).then((response)=>{
-            console.log(response.data[0]);
-            setPrivateData(response.data[0].code);
-            setPrivateRoomFound(true);
+        axios.post(CREATE_URL, {roomName: room_name, roomPass: room_pass, code: ""}).then((response)=>{
+            console.log(response.data);
+            console.log(room_pass);         // why this is undefined ??
+            if(response.data.code && response.data.code===11000){
+                throw new Error("Room already Registered");
+            }
+            console.log("Room not registered");
+            // setPrivateData(response.data[0].code);
+            // setPrivateRoomFound(true);
+            findPrivateData(room_name, room_pass);
             return response;
         }).catch((err)=>{
+            console.log("Room Already registered ---------------------");
             setPrivateRoomFound(false);
+            setPrivateData("");
             toast.error("Room already registered");
             return {err: err};
         })
     }
-    const findPrivateData = (room_name)=>{
+    const findPrivateData = (room_name, room_pass)=>{
         const SEARCH_URL = `http://localhost:5000/rooms/${room_name}`;
         axios.get(SEARCH_URL).then((response)=>{
-            console.log(response.data[0]);
-            setPrivateData(response.data[0].code);
-            setPrivateRoomFound(true);
-            return response;
+            console.log(response.data);
+            console.log(room_pass);     // why this is undefined ??
+            if(response.data[0].roomPass === room_pass){
+                setPrivateData(response.data[0].code);
+                setPrivateRoomFound(true);
+                console.log("no error: everything fine");
+                return response;
+            }
+            else{
+                console.log("error: room pass mismatched");
+                setPrivateRoomFound(false);
+                setPrivateData("");
+                return new Error("Room Password Mismatched");
+            }
         }).catch((err)=>{
             setPrivateRoomFound(false);
+            setPrivateData("");
             return {err: err};
         })
     }

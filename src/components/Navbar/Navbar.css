@@ -43,3 +43,6 @@ a{
     border-radius: 6px;
     cursor: pointer;
 }
+.leftNav img{
+    height: 40px;
+}

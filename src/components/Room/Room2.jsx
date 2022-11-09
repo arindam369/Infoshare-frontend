@@ -13,12 +13,12 @@ export default function Room2(props){
     const roomCtx = useContext(RoomContext);
     const [code, setCode] = useState("");
     const [visibleName, setVisibleName] = useState(false);
-    const {roomName} = useParams();
+    const roomName = props.roomName;
 
     useEffect(()=>{
-        roomCtx.findPrivateData(roomName);
+    //     roomCtx.findPrivateData(roomName);
         setCode(roomCtx.privateData);
-    },[roomCtx, roomName])
+    },[roomCtx])
 
     function updatePrivateData(){
         roomCtx.updatePrivateData(roomName, code);
@@ -54,6 +54,10 @@ export default function Room2(props){
                     <div className="room-text">
                         <h3>Room Not Found</h3>
                         <h4>Sorry, but we can't find the room you are looking for...</h4>
+
+                        <div className="button-box2">
+                            <Link className="back-link" to="/"> <button className="back">  Go Back </button> </Link>
+                        </div>
                     </div>
                 </div>
 

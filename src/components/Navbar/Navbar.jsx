@@ -5,7 +5,7 @@ export default function Navbar(){
     return (
         <>
             <div className="navBar">
-                <div className="leftNav"> <Link to="/"> Typoo </Link></div>
+                <div className="leftNav"> <Link to="/"> InfoShare </Link></div>
                 <div className="rightNav">
                     <Link className="link" to="/public"> <li> Public Room </li> </Link>
                     <Link className="link" to="/private"> <li> Private Room </li> </Link>
