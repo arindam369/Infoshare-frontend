@@ -7,17 +7,28 @@ import RoomContext from "../../store/RoomContext";
 import { AiFillEye, AiFillEyeInvisible } from "react-icons/ai";
 import { FaStarOfLife } from "react-icons/fa";
 import {toast} from "react-toastify";
+import { IoMdRefreshCircle } from "react-icons/io";
+import { Circles } from 'react-loader-spinner'
 
 export default function Room2(props){
     const roomCtx = useContext(RoomContext);
     const [code, setCode] = useState("");
     const [visibleName, setVisibleName] = useState(false);
     const roomName = props.roomName;
+    const [reloading, setReloading] = useState(false);
 
     useEffect(()=>{
     //     roomCtx.findPrivateData(roomName);
         setCode(roomCtx.privateData);
     },[roomCtx])
+
+    function reload(){
+        setReloading(true);
+        setCode(roomCtx.privateData);
+        setTimeout(() => {
+            setReloading(false);
+        }, 700);
+    }
 
     function updatePrivateData(){
         roomCtx.updatePrivateData(roomName, code);
@@ -30,7 +41,7 @@ export default function Room2(props){
 
     return (
         <>
-            {roomCtx.privateRoomFound && <div>
+            {roomCtx.privateRoomFound==="found" && <div>
                 <div className="room-heading">{props.roomType}</div>
                 <div className="room-name">
                     <span className="room-name-roomName">{visibleName? roomName:<div className="pass-stars"><FaStarOfLife/><FaStarOfLife/><FaStarOfLife/><FaStarOfLife/><FaStarOfLife/></div>}</span>
@@ -44,10 +55,11 @@ export default function Room2(props){
                 <div className="button-box">
                     <button className="save" onClick={updatePrivateData}>Save Changes</button>
                     <Link className="back-link" to="/"> <button className="back">  Go Back </button> </Link>
+                    <IoMdRefreshCircle className={reloading?"reload-button reloading":"reload-button"} onClick={reload}/>
                 </div>
             </div>}
 
-            {!roomCtx.privateRoomFound &&
+            {roomCtx.privateRoomFound==="notFound" &&
                 <div className="roomNotFound">
                     <img src={require("./../../assets/error.png")} alt="img" />
                     <div className="room-text">
@@ -59,8 +71,16 @@ export default function Room2(props){
                         </div>
                     </div>
                 </div>
-
             }
+            <Circles
+                    height="80"
+                    width="80"
+                    // color="#4fa94d"
+                    color="rgb(4, 111, 219)"
+                    ariaLabel="circles-loading"
+                    wrapperClass="circle-loader2"
+                    visible={roomCtx.privateRoomFound===""}
+            />
         </>
     );
 }

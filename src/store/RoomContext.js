@@ -17,7 +17,7 @@ const RoomContext = React.createContext({
 export const RoomContextProvider = (props)=>{
     const [publicData, setPublicData] = useState("");
     const [privateData, setPrivateData] = useState("");
-    const [privateRoomFound, setPrivateRoomFound] = useState(false);
+    const [privateRoomFound, setPrivateRoomFound] = useState("");
     
     const BACKEND_URL = process.env.REACT_APP_DB;
 
@@ -48,7 +48,7 @@ export const RoomContextProvider = (props)=>{
             findPrivateData(room_name, room_pass);
             return response;
         }).catch((err)=>{
-            setPrivateRoomFound(false);
+            setPrivateRoomFound("notFound");
             setPrivateData("");
             toast.error("Room already registered");
             return {err: err};
@@ -56,22 +56,27 @@ export const RoomContextProvider = (props)=>{
     }
     const findPrivateData = (room_name, room_pass)=>{
         const SEARCH_URL = `${BACKEND_URL}/rooms/${room_name}`;
-        axios.get(SEARCH_URL).then((response)=>{
-            if(response.data[0].roomPass === room_pass){
-                setPrivateData(response.data[0].code);
-                setPrivateRoomFound(true);
-                return response;
-            }
-            else{
-                setPrivateRoomFound(false);
+        setPrivateRoomFound("");
+        setTimeout(()=>{
+            axios.get(SEARCH_URL).then((response)=>{
+                if(response.data[0].roomPass === room_pass){
+                    
+                        setPrivateData(response.data[0].code);
+                        setPrivateRoomFound("found");
+                    
+                    return response;
+                }
+                else{
+                    setPrivateRoomFound("notFound");
+                    setPrivateData("");
+                    return new Error("Room Password Mismatched");
+                }
+            }).catch((err)=>{
+                setPrivateRoomFound("notFound");
                 setPrivateData("");
-                return new Error("Room Password Mismatched");
-            }
-        }).catch((err)=>{
-            setPrivateRoomFound(false);
-            setPrivateData("");
-            return {err: err};
-        })
+                return {err: err};
+            })
+        },2000);
     }
     const updatePrivateData = (room_name, codeVal)=>{
         const UPDATE_URL = `${BACKEND_URL}/rooms/${room_name}`;

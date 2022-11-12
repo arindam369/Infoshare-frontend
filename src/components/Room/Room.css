@@ -133,6 +133,52 @@ textarea::-webkit-scrollbar-thumb {
     justify-content: center;
     align-items: center;
 }
+.reload-button{
+    font-size: 2.1rem;
+    cursor: pointer;
+    color: rgb(2, 64, 126);
+}
+.reloading{
+    animation: 0.6s rotating;
+}
+@keyframes rotating {
+    0%{
+        -ms-transform: rotate(0deg);
+        -moz-transform: rotate(0deg);
+        -webkit-transform: rotate(0deg);
+        -o-transform: rotate(0deg);
+        transform: rotate(0deg);
+    }
+    50%{
+        -ms-transform: rotate(120deg);
+        -moz-transform: rotate(120deg);
+        -webkit-transform: rotate(120deg);
+        -o-transform: rotate(120deg);
+        transform: rotate(120deg);
+    }
+    100%{
+        -ms-transform: rotate(0deg);
+        -moz-transform: rotate(0deg);
+        -webkit-transform: rotate(0deg);
+        -o-transform: rotate(0deg);
+        transform: rotate(0deg);
+    }
+    /* from {
+      -ms-transform: rotate(0deg);
+      -moz-transform: rotate(0deg);
+      -webkit-transform: rotate(0deg);
+      -o-transform: rotate(0deg);
+      transform: rotate(0deg);
+    }
+    to {
+      -ms-transform: rotate(90deg);
+      -moz-transform: rotate(90deg);
+      -webkit-transform: rotate(90deg);
+      -o-transform: rotate(90deg);
+      transform: rotate(90deg);
+    } */
+  }
+
 @media (max-width: 690px){
     .room-description textarea{
         width: 400px;
