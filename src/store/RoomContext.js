@@ -41,18 +41,21 @@ export const RoomContextProvider = (props)=>{
     }
     const createPrivateRoom = (room_name, room_pass)=>{
         const CREATE_URL = `${BACKEND_URL}/rooms`;
-        axios.post(CREATE_URL, {roomName: room_name, roomPass: room_pass, code: ""}).then((response)=>{
-            if(response.data.code && response.data.code===11000){
-                throw new Error("Room already Registered");
-            }
-            findPrivateData(room_name, room_pass);
-            return response;
-        }).catch((err)=>{
-            setPrivateRoomFound("notFound");
-            setPrivateData("");
-            toast.error("Room already registered");
-            return {err: err};
-        })
+        setPrivateRoomFound("");
+        setTimeout(() => {
+            axios.post(CREATE_URL, {roomName: room_name, roomPass: room_pass, code: ""}).then((response)=>{
+                if(response.data.code && response.data.code===11000){
+                    throw new Error("Room already Registered");
+                }
+                findPrivateData(room_name, room_pass);
+                return response;
+            }).catch((err)=>{
+                setPrivateRoomFound("notFound");
+                setPrivateData("");
+                toast.error("Room already registered");
+                return {err: err};
+            })
+        }, 2000);
     }
     const findPrivateData = (room_name, room_pass)=>{
         const SEARCH_URL = `${BACKEND_URL}/rooms/${room_name}`;
@@ -60,10 +63,8 @@ export const RoomContextProvider = (props)=>{
         setTimeout(()=>{
             axios.get(SEARCH_URL).then((response)=>{
                 if(response.data[0].roomPass === room_pass){
-                    
-                        setPrivateData(response.data[0].code);
-                        setPrivateRoomFound("found");
-                    
+                    setPrivateData(response.data[0].code);
+                    setPrivateRoomFound("found");
                     return response;
                 }
                 else{
