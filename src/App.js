@@ -6,11 +6,8 @@ import Room from './components/Room/Room';
 import PrivateRoom from './components/PrivateRoom/PrivateRoom';
 import { ToastContainer} from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
-import { useContext } from 'react';
-import RoomContext from './store/RoomContext';
 
 export default function App(){
-  const roomCtx = useContext(RoomContext);
   return (
     <>
       <Navbar/>

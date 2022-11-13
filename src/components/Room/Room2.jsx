@@ -20,7 +20,7 @@ export default function Room2(props){
     useEffect(()=>{
     //     roomCtx.findPrivateData(roomName);
         setCode(roomCtx.privateData);
-    },[roomCtx])
+    },[roomCtx.privateData])
 
     function reload(){
         setReloading(true);
